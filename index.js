@@ -166,9 +166,8 @@ const descriptionText = `
 `;
 
 // create a new DOM element containing the template string and append it to the description container
-const descriptionElement = document.createElement("p");
-descriptionElement.innerText = descriptionText;
-descriptionContainer.appendChild(descriptionElement);
+const numUnfundedSpan = document.getElementById("num-unfunded");
+numUnfundedSpan.innerText = `Currently, ${unfundedGamesCount} ${unfundedGamesCount === 1 ? "game remains" : "games remain"} unfunded. We need your help to fund these amazing games!`;
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
@@ -187,10 +186,10 @@ const [mostFundedGame, secondMostFundedGame, ...rest] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 const mostFundedElement = document.createElement("p");
-mostFundedElement.innerText = mostFundedGame.name;
+mostFundedElement.innerText = `${mostFundedGame.name} — $${mostFundedGame.pledged.toLocaleString()} pledged`;
 firstGameContainer.appendChild(mostFundedElement);
 
 // do the same for the runner-up item
 const secondMostFundedElement = document.createElement("p");
-secondMostFundedElement.innerText = secondMostFundedGame.name;
+secondMostFundedElement.innerText = `${secondMostFundedGame.name} — $${secondMostFundedGame.pledged.toLocaleString()} pledged`;
 secondGameContainer.appendChild(secondMostFundedElement);
